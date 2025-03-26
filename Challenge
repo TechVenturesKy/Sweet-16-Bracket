@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet 16 Bracket</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .bracket { display: flex; justify-content: center; margin: 20px; }
+        .round { margin: 0 20px; }
+        .matchup { margin-bottom: 10px; }
+    </style>
+    <script>
+        // Function to automatically advance winners to the next round
+        function updateWinners(matchupId, nextRoundId) {
+            const selectedValue = document.getElementById(matchupId).value;
+            document.getElementById(nextRoundId).value = selectedValue;
+        }
+    </script>
+</head>
+<body>
+    <h1>Sweet 16 Bracket</h1>
+    <form id="sweet16-form">
+        <div class="bracket">
+            <!-- Round 1 -->
+            <div class="round">
+                <h3>Round 1</h3>
+                <div class="matchup">
+                    <label>Team A vs. Team B</label>
+                    <select id="match1" onchange="updateWinners('match1', 'quarter1')">
+                        <option value="Team A">Team A</option>
+                        <option value="Team B">Team B</option>
+                    </select>
+                </div>
+                <div class="matchup">
+                    <label>Team C vs. Team D</label>
+                    <select id="match2" onchange="updateWinners('match2', 'quarter2')">
+                        <option value="Team C">Team C</option>
+                        <option value="Team D">Team D</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Quarterfinals -->
+            <div class="round">
+                <h3>Quarterfinals</h3>
+                <div class="matchup">
+                    <label>Winner Match 1</label>
+                    <select id="quarter1">
+                        <option value="" disabled selected>Select Winner</option>
+                    </select>
+                </div>
+                <div class="matchup">
+                    <label>Winner Match 2</label>
+                    <select id="quarter2">
+                        <option value="" disabled selected>Select Winner</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
